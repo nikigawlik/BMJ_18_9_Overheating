@@ -1001,16 +1001,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 114922305404328222, guid: ec71cc6bd5dfd2346bfb70904957cf0a,
-        type: 2}
-      propertyPath: acceleration
-      value: 44
-      objectReference: {fileID: 0}
-    - target: {fileID: 114922305404328222, guid: ec71cc6bd5dfd2346bfb70904957cf0a,
-        type: 2}
-      propertyPath: drag
-      value: 33
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec71cc6bd5dfd2346bfb70904957cf0a, type: 2}
   m_IsPrefabAsset: 0
@@ -1243,6 +1233,7 @@ MonoBehaviour:
   flameShutoffHeat: 8
   money: 0
   shootAudio: {fileID: 1566455660}
+  flameAudio: {fileID: 1566455661}
 --- !u!60 &1566455657
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1411,11 +1402,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 95dff12b85a97d247933c2a926e94b7a, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
