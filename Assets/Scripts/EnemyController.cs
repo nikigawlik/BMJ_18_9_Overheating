@@ -16,8 +16,12 @@ public class EnemyController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		speed = Random.Range(minSpeed, maxSpeed);
-		direction = Mathf.Atan2(-transform.position.y, -transform.position.x) * Mathf.Rad2Deg;
-		direction += Random.Range(-randomAngle, randomAngle);
+		GameObject target = GameController.instance.player;
+		if(target != null) {
+			Vector3 delta = target.transform.position - transform.position;
+			direction = Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg;
+			direction += Random.Range(-randomAngle, randomAngle);
+		}
 	}
 	
 	// Update is called once per frame

@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa24a1fd086b66f45b080a3018adc385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 0.5
-  maxSpeed: 2
+  minSpeed: 3
+  maxSpeed: 6
   randomAngle: 5
   hp: 2
   explosion: {fileID: 1236996766358418, guid: e28b590244f470945bf873b7bdbeacea, type: 2}

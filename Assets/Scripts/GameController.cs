@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 	public Button restartButton;
 	public GameObject gameOverScreen;
+	public GameObject player;
 	public float gameOverDelay = 2f;
 
 	public static GameController instance;
