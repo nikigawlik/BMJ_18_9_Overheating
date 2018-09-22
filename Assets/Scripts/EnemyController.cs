@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour {
 
 	public GameObject explosion;
 	public GameObject[] drops;
+	public GameObject moneyDrop;
 
 	private float speed;
 	private float direction;
@@ -44,6 +45,10 @@ public class EnemyController : MonoBehaviour {
 			if(size >= 3f) {
 				GameObject drop = drops[Random.Range(0, drops.Length)];
 				Instantiate(drop, transform.position, Quaternion.identity);
+			}
+			int money = Mathf.RoundToInt(size * size);
+			for(int i = 0; i < money; i++) {
+				Instantiate(moneyDrop, transform.position, transform.rotation);
 			}
 			Destroy(this.gameObject);
 		}

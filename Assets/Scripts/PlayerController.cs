@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour {
 
 	public float flameShutoffHeat = 5f;
 
+	public float money = 0f;
+
 	private float heat = 0f;
 	private float shootTimer = 0f;
 
