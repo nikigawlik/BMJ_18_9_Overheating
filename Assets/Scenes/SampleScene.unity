@@ -143,7 +143,7 @@ MonoBehaviour:
   restartButton: {fileID: 32408113}
   gameOverScreen: {fileID: 1140738269}
   player: {fileID: 1566455655}
-  gameOverDelay: 2
+  gameOverDelay: 1
 --- !u!224 &7960299
 RectTransform:
   m_ObjectHideFlags: 0
