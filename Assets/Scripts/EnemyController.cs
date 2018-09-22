@@ -1,0 +1,24 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyController : MonoBehaviour {
+	public float minSpeed = 0.5f;
+	public float maxSpeed = 2f;
+	public float randomAngle = 20f;
+
+	private float speed;
+	private float direction;
+
+	// Use this for initialization
+	void Start () {
+		speed = Random.Range(minSpeed, maxSpeed);
+		direction = Mathf.Atan2(-transform.position.y, -transform.position.x) * Mathf.Rad2Deg;
+		direction += Random.Range(-randomAngle, randomAngle);
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		transform.position += Quaternion.Euler(0, 0, direction) * Vector3.right * speed * Time.deltaTime;
+	}
+}
