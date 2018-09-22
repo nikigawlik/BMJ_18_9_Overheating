@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-	public float speed = 2f;
+	public float acceleration = 2f;
+	public float drag = 2f;
 	public GameObject bulletPrefab;
 	public float shootDelay = .2f;
 	public GameObject explosion;
 
+	public GameObject flame;
+
 	public float maxHeat = 10f;
 	public float heatDecay = 1f;
-
 	public float bulletHeatIncrease = 1f;
+	public float flameHeatIncrease = 2f;
 
 	private float heat = 0f;
-
 	private float shootTimer = 0f;
+
+	private Vector3 velocity = Vector2.zero;
 
 	// Use this for initialization
 	void Start () {
@@ -43,6 +47,18 @@ public class PlayerController : MonoBehaviour {
 		// heat display
 		heat = Mathf.Clamp(heat, 0, maxHeat);
 		GetComponentInChildren<SpriteColorChange>().progress = GetHeatFactor();
+
+		// movement
+		if(Input.GetButton("Fire2")) {
+			flame.SetActive(true);
+			velocity += transform.right * acceleration * Time.deltaTime;
+			heat += flameHeatIncrease * Time.deltaTime;
+		} else {
+			flame.SetActive(false);
+		}
+
+		velocity += Vector3.ClampMagnitude(-velocity.normalized * drag * Time.deltaTime, velocity.magnitude);
+		transform.position += velocity * Time.deltaTime;
 	}
 
 	private float GetInverseHeatFactor()
