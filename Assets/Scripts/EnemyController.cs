@@ -6,6 +6,9 @@ public class EnemyController : MonoBehaviour {
 	public float minSpeed = 0.5f;
 	public float maxSpeed = 2f;
 	public float randomAngle = 20f;
+	public float hp = 2;
+
+	public GameObject explosion;
 
 	private float speed;
 	private float direction;
@@ -20,5 +23,12 @@ public class EnemyController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.position += Quaternion.Euler(0, 0, direction) * Vector3.right * speed * Time.deltaTime;
+
+		// hp
+		if(hp <= 0) {
+			// die
+			Instantiate(explosion, transform.position, transform.rotation);
+			Destroy(this.gameObject);
+		}
 	}
 }
