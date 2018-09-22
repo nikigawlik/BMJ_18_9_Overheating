@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour {
 	public AudioSource shootAudio;
 	public AudioSource flameAudio;
 
+	public Text scoreText;
+
 	private float heat = 0f;
 	private float shootTimer = 0f;
 
@@ -85,6 +87,9 @@ public class PlayerController : MonoBehaviour {
 
 		velocity += Vector3.ClampMagnitude(-velocity.normalized * drag * Time.deltaTime, velocity.magnitude);
 		transform.position += velocity * Time.deltaTime;
+
+		string points = money.ToString();
+		scoreText.text = points;
 	}
 
 	private float GetInverseHeatFactor()
