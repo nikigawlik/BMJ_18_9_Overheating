@@ -1234,6 +1234,7 @@ MonoBehaviour:
   money: 0
   shootAudio: {fileID: 1566455660}
   flameAudio: {fileID: 1566455661}
+  scoreText: {fileID: 1047641954}
 --- !u!60 &1566455657
 PolygonCollider2D:
   m_ObjectHideFlags: 0
