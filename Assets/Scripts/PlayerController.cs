@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour {
 	public float bulletHeatIncrease = 1f;
 	public float flameHeatIncrease = 2f;
 
+	public float flameShutoffHeat = 5f;
+
 	private float heat = 0f;
 	private float shootTimer = 0f;
 
@@ -49,7 +51,7 @@ public class PlayerController : MonoBehaviour {
 		GetComponentInChildren<SpriteColorChange>().progress = GetHeatFactor();
 
 		// movement
-		if(Input.GetButton("Fire2")) {
+		if(Input.GetButton("Fire2") && heat < flameShutoffHeat) {
 			flame.SetActive(true);
 			velocity += transform.right * acceleration * Time.deltaTime;
 			heat += flameHeatIncrease * Time.deltaTime;
