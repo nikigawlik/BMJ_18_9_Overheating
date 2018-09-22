@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour {
 	private float size = 1f;
 
 	public GameObject explosion;
-	public GameObject drop;
+	public GameObject[] drops;
 
 	private float speed;
 	private float direction;
@@ -42,6 +42,7 @@ public class EnemyController : MonoBehaviour {
 			// die
 			Instantiate(explosion, transform.position, transform.rotation);
 			if(size >= 3f) {
+				GameObject drop = drops[Random.Range(0, drops.Length)];
 				Instantiate(drop, transform.position, Quaternion.identity);
 			}
 			Destroy(this.gameObject);

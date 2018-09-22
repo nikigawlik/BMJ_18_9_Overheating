@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour {
 	public enum PowerUpType {
-		COOLANT
+		COOLANT,
+		EXPLOSION
 	}
+
+	public int bulletNumberOnExplosion = 100;
+	public GameObject bullet;
 
 	public PowerUpType powerUpType = PowerUpType.COOLANT;
 	public float rotationSpeed = 20f;
@@ -26,6 +30,11 @@ public class PowerUp : MonoBehaviour {
 			switch(powerUpType) {
 				case PowerUpType.COOLANT:
 					pc.Heat = 0;
+				break;
+				case PowerUpType.EXPLOSION:
+					for(int i = 0; i < bulletNumberOnExplosion; i++) {
+						Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, 360f / bulletNumberOnExplosion * i));
+					}
 				break;
 			}
 			Destroy(this.gameObject);
