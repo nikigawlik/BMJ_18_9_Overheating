@@ -20,9 +20,11 @@ public class OrbController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GameObject target = GameController.instance.player;
-		Vector3 delta = target.transform.position - transform.position;
+		if(target != null) {
+			Vector3 delta = target.transform.position - transform.position;
 
-		velocity += delta.normalized * acceleration * Time.deltaTime;
+			velocity += delta.normalized * acceleration * Time.deltaTime;
+		}
 		
 		velocity += Vector3.ClampMagnitude(-velocity.normalized * drag * Time.deltaTime, velocity.magnitude);
 		transform.position += velocity * Time.deltaTime;

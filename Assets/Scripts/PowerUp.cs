@@ -14,9 +14,11 @@ public class PowerUp : MonoBehaviour {
 	public PowerUpType powerUpType = PowerUpType.COOLANT;
 	public float rotationSpeed = 20f;
 
+	public AudioSource audioSpawn;
+	public AudioClip audioTriggerClip;
+
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -37,6 +39,7 @@ public class PowerUp : MonoBehaviour {
 					}
 				break;
 			}
+			GameController.instance.generalSource.PlayOneShot(audioTriggerClip);
 			Destroy(this.gameObject);
 		}
 	}

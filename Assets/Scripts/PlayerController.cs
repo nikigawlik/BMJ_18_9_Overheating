@@ -19,8 +19,10 @@ public class PlayerController : MonoBehaviour {
 	public float flameHeatIncrease = 2f;
 
 	public float flameShutoffHeat = 5f;
-
 	public float money = 0f;
+
+	public AudioSource shootAudio;
+	public AudioSource flameAudio;
 
 	private float heat = 0f;
 	private float shootTimer = 0f;
@@ -61,6 +63,8 @@ public class PlayerController : MonoBehaviour {
 			Heat += bulletHeatIncrease;
 			shootTimer = shootDelay;
 			Instantiate(bulletPrefab, transform.position, transform.rotation);
+
+			shootAudio.Play();
 		}
 
 		// heat display
@@ -71,10 +75,12 @@ public class PlayerController : MonoBehaviour {
 		// movement
 		if(Input.GetButton("Fire2") && Heat < flameShutoffHeat) {
 			flame.SetActive(true);
+			flameAudio.mute = false;
 			velocity += transform.right * acceleration * Time.deltaTime;
 			Heat += flameHeatIncrease * Time.deltaTime;
 		} else {
 			flame.SetActive(false);
+			flameAudio.mute = true;
 		}
 
 		velocity += Vector3.ClampMagnitude(-velocity.normalized * drag * Time.deltaTime, velocity.magnitude);

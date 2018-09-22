@@ -19,8 +19,8 @@ public class EnemySpawner : MonoBehaviour {
 			spawnTimer = 1f / enemiesPerSecond;
 
 			// spawn enemy
-			float vertExtent = Camera.main.orthographicSize / 2f + outOfScreenPadding;
-			float horzExtent = (vertExtent * Screen.width / Screen.height) / 2f + outOfScreenPadding;
+			float vertExtent = Camera.main.orthographicSize + outOfScreenPadding;
+			float horzExtent = (vertExtent * Screen.width / Screen.height) + outOfScreenPadding;
 			bool horizontal = Random.Range(0f, 1f) < .5f; 
 			bool positive = Random.Range(0f, 1f) < .5f;
 			Vector2 spawnPosition;

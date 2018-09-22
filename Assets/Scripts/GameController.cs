@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour {
 	public GameObject player;
 	public float gameOverDelay = 2f;
 
+	public AudioSource generalSource;
+
 	public static GameController instance;
 
 	// Use this for initialization
