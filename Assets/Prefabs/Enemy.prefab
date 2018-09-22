@@ -122,6 +122,8 @@ MonoBehaviour:
   maxSpeed: 6
   randomAngle: 5
   hp: 1
+  display: {fileID: 1018312218184542}
+  maxSize: 3
   explosion: {fileID: 1236996766358418, guid: e28b590244f470945bf873b7bdbeacea, type: 2}
 --- !u!212 &212146157640934476
 SpriteRenderer:

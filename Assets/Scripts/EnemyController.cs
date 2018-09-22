@@ -6,7 +6,11 @@ public class EnemyController : MonoBehaviour {
 	public float minSpeed = 0.5f;
 	public float maxSpeed = 2f;
 	public float randomAngle = 20f;
-	public float hp = 2;
+	public float hp = 1f;
+
+	public GameObject display;
+	public float maxSize = 3f;
+	private float size = 1f;
 
 	public GameObject explosion;
 
@@ -22,6 +26,11 @@ public class EnemyController : MonoBehaviour {
 			direction = Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg;
 			direction += Random.Range(-randomAngle, randomAngle);
 		}
+
+		float f = Random.Range(0f, 1f) * Random.Range(0f, 1f);
+		size = Mathf.Floor(f * maxSize) + 1f;
+		display.transform.localScale *= size;
+		hp *= size;
 	}
 	
 	// Update is called once per frame

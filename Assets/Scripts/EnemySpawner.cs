@@ -6,7 +6,6 @@ public class EnemySpawner : MonoBehaviour {
 	public float enemiesPerSecond = 4f;
 	public float outOfScreenPadding = 20f;
 	public GameObject enemyPrefab;
-
 	private float spawnTimer = 0f;
 
 	// Use this for initialization

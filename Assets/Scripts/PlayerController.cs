@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
 		if(shootTimer <= 0 && Input.GetButton("Fire1")) {
 			heat += bulletHeatIncrease;
 			shootTimer = shootDelay;
-			GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+			Instantiate(bulletPrefab, transform.position, transform.rotation);
 		}
 
 		// heat display
