@@ -25,15 +25,28 @@ public class PlayerController : MonoBehaviour {
 
 	private Vector3 velocity = Vector2.zero;
 
-	// Use this for initialization
-	void Start () {
+    public float Heat
+    {
+        get
+        {
+            return heat;
+        }
+
+        set
+        {
+            heat = value;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		// heat decay
-		heat -= heatDecay * Time.deltaTime;
+		Heat -= heatDecay * Time.deltaTime;
 
 		// rotation
 		Vector3 dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
@@ -43,21 +56,21 @@ public class PlayerController : MonoBehaviour {
 		// shooting		
 		shootTimer -= Time.deltaTime * GetInverseHeatFactor();
 		if(shootTimer <= 0 && Input.GetButton("Fire1")) {
-			heat += bulletHeatIncrease;
+			Heat += bulletHeatIncrease;
 			shootTimer = shootDelay;
 			Instantiate(bulletPrefab, transform.position, transform.rotation);
 		}
 
 		// heat display
-		heat = Mathf.Clamp(heat, 0, maxHeat);
+		Heat = Mathf.Clamp(Heat, 0, maxHeat);
 		GetComponentInChildren<SpriteColorChange>().progress = GetHeatFactor();
 		barImage.fillAmount = GetHeatFactor();
 
 		// movement
-		if(Input.GetButton("Fire2") && heat < flameShutoffHeat) {
+		if(Input.GetButton("Fire2") && Heat < flameShutoffHeat) {
 			flame.SetActive(true);
 			velocity += transform.right * acceleration * Time.deltaTime;
-			heat += flameHeatIncrease * Time.deltaTime;
+			Heat += flameHeatIncrease * Time.deltaTime;
 		} else {
 			flame.SetActive(false);
 		}
@@ -73,7 +86,7 @@ public class PlayerController : MonoBehaviour {
 
     private float GetHeatFactor()
     {
-        return Mathf.Clamp01(heat / maxHeat);
+        return Mathf.Clamp01(Heat / maxHeat);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
