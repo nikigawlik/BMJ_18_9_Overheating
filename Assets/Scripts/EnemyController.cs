@@ -8,7 +8,6 @@ public class EnemyController : MonoBehaviour {
 	public float randomAngle = 20f;
 	public float hp = 1f;
 
-	public GameObject display;
 	public float maxSize = 3f;
 	private float size = 1f;
 
@@ -29,7 +28,7 @@ public class EnemyController : MonoBehaviour {
 
 		float f = Random.Range(0f, 1f) * Random.Range(0f, 1f);
 		size = Mathf.Floor(f * maxSize) + 1f;
-		display.transform.localScale *= size;
+		transform.localScale *= size;
 		hp *= size;
 	}
 	

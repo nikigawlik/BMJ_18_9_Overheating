@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 	public float acceleration = 2f;
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject explosion;
 
 	public GameObject flame;
+	public Image barImage;
 
 	public float maxHeat = 10f;
 	public float heatDecay = 1f;
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour {
 		// heat display
 		heat = Mathf.Clamp(heat, 0, maxHeat);
 		GetComponentInChildren<SpriteColorChange>().progress = GetHeatFactor();
+		barImage.fillAmount = GetHeatFactor();
 
 		// movement
 		if(Input.GetButton("Fire2") && heat < flameShutoffHeat) {
