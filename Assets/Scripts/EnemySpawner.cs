@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 	public float enemiesPerSecond = 4f;
-	public float enemyRadius = 20f;
+	public float outOfScreenPadding = 20f;
 	public GameObject enemyPrefab;
 
 	private float spawnTimer = 0f;
@@ -18,10 +18,24 @@ public class EnemySpawner : MonoBehaviour {
 	void Update () {
 		if(spawnTimer < 0) {
 			spawnTimer = 1f / enemiesPerSecond;
-			
+
 			// spawn enemy
-			float spawnAngle = Random.Range(0f, 360f);
-			Vector2 spawnPosition = new Vector2(Mathf.Cos(spawnAngle * Mathf.Deg2Rad), Mathf.Sin(spawnAngle * Mathf.Deg2Rad)) * enemyRadius;
+			float vertExtent = Camera.main.orthographicSize / 2f + outOfScreenPadding;
+			float horzExtent = (vertExtent * Screen.width / Screen.height) / 2f + outOfScreenPadding;
+			bool horizontal = Random.Range(0f, 1f) < .5f; 
+			bool positive = Random.Range(0f, 1f) < .5f;
+			Vector2 spawnPosition;
+			if(horizontal) {
+				spawnPosition = new Vector2(
+					Random.Range(-horzExtent, horzExtent),
+					vertExtent * (positive? 1f : -1f)
+				);
+			} else {
+				spawnPosition = new Vector2(
+					horzExtent * (positive? 1f : -1f),
+					Random.Range(-vertExtent, vertExtent)
+				);
+			}
 			Instantiate(enemyPrefab, spawnPosition, Quaternion.Euler(0, 0, Random.Range(0, 360)));
 		}
 		spawnTimer -= Time.deltaTime;
